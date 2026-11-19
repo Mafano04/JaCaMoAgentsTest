@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.gradle.org/gradle/libs-releases" }
+    maven { url "https://raw.githubusercontent.com/jacamo-lang/mvn-repo/master" }
+}
+
+dependencies {
+    implementation 'org.jacamo:jacamo:1.2'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/env']
+        }
+        resources {
+            srcDirs = ['src/agt', 'src/org', 'src/int']
+        }
+    }
+}
+
+task run(type: JavaExec) {
+    group = 'JaCaMo'
+    description = 'Esegue il sistema multi-agente JaCaMo'
+    mainClass.set('jacamo.infra.JaCaMoLauncher')
+    args 'cinematicket.jcm'
+    classpath = sourceSets.main.runtimeClasspath
+}

@@ -1,0 +1,15 @@
+mas cinematicket {
+
+    agent emp : cinefile.asl {
+        instances: 10
+        focus: cinema.totem1, cinema.totem2, cinema.seats
+    }
+
+    workspace cinema {
+        artifact totem1 : CinemaTotem(1)
+        artifact totem2 : CinemaTotem(2)
+        artifact seats  : SeatCounter(7)
+    }
+
+    asl-path: "src/agt"
+}
