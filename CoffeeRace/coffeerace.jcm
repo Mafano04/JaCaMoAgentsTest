@@ -1,0 +1,21 @@
+mas coffeerace {
+
+    // 1. Definizione degli agenti
+    agent emp : employee.asl {
+        instances: 5          // Numero di dipendenti (aumentalo per i test di scalabilità)
+        focus: office.machine // Fa osservare l'artefatto fin dall'avvio
+    }
+
+    agent tech : technician.asl {
+        focus: office.machine
+    }
+
+    // 2. Definizione del workspace e dell'artefatto
+    workspace office {
+        // Istanzia CoffeeMachine passando i parametri a init(initialStock, maxCapacity)
+        artifact machine : CoffeeMachine(3, 10)
+    }
+
+    // 3. Percorsi delle cartelle (coerenti con il tuo screenshot)
+    asl-path: "src/agt"
+}
